@@ -41,21 +41,10 @@ class PostControllerTest {
     @Autowired UserRepository userRepository;
     @Autowired PostRepository postRepository;
 
-
-    // 전체 테스트하면 실패하는 이유..?
-    // beforeEach, afterEach 어떻게 써줘야하나
-    @BeforeEach
-    void beforeEach() {
-        userRepository = new MemoryUserRepository();
-        postRepository = new MemoryPostRepository();
-    }
-
     @AfterEach
     void afterEach() {
-//        userRepository.clearStore();
-//        postRepository.clearStore();
-//        userRepository = new MemoryUserRepository();
-//        postRepository = new MemoryPostRepository();
+        userRepository.clearStore();
+        postRepository.clearStore();
     }
 
     @Test

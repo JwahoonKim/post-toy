@@ -25,6 +25,7 @@ public class MemoryUserRepository implements UserRepository {
     }
 
     public void clearStore() {
+        sequence = 0L;
         store.clear();
     }
 }

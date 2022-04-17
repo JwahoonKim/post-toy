@@ -35,6 +35,7 @@ public class MemoryCommentRepository implements CommentRepository {
     }
 
     public void clearStore() {
+        sequence = 0L;
         store.clear();
     }
 

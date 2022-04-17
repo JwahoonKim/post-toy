@@ -42,7 +42,12 @@ class CommentControllerTest {
     @Autowired PostRepository postRepository;
     @Autowired CommentRepository commentRepository;
 
-    // afterEach 처리 어케하지..
+    @AfterEach
+    void afterEach() {
+        userRepository.clearStore();
+        postRepository.clearStore();
+        commentRepository.clearStore();
+    }
 
     @Test
     public void 댓글_등록_테스트() throws Exception {
