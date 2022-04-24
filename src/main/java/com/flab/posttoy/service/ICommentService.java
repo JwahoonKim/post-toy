@@ -7,7 +7,8 @@ import com.flab.posttoy.dto.UpdateCommentDTO;
 public interface ICommentService {
     CommentDTO addComment(CommentDTO commentDTO);
 
-    CommentDTO modifyComment(UpdateCommentDTO updateCommentDTO, Long id);
+    // 비지니스 로직을 가지는 부분은 DTO 와 의존성이 없어야 한다
+    Comment modifyComment(String content, Long id);
 
     void removeComment(Long id);
 }

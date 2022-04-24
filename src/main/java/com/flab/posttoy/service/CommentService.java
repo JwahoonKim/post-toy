@@ -11,6 +11,8 @@ import com.flab.posttoy.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService implements ICommentService{
@@ -27,11 +29,10 @@ public class CommentService implements ICommentService{
     }
 
     @Override
-    public CommentDTO modifyComment(UpdateCommentDTO updateCommentDTO, Long id) {
+    public Comment modifyComment(String content, Long id) {
         Comment existComment = validateExistComment(id);
-        existComment.changeComment(updateCommentDTO.getContent());
-        commentRepository.update(existComment);
-        return commentMapper.toCommentDto(existComment);
+        existComment.changeComment(content);
+        return commentRepository.update(existComment);
     }
 
     @Override

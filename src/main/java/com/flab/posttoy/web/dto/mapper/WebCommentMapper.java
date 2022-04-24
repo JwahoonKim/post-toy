@@ -12,5 +12,5 @@ public interface WebCommentMapper {
     CommentDTO toCommentDto(RequestCommentDTO requestCommentDTO);
     UpdateCommentDTO toUpdateCommentDto(RequestCommentDTO requestCommentDTO);
 
-    ResponseCommentDTO toResponseCommentDto(CommentDTO commentDTO);
+    ResponseCommentDTO toResponseCommentDto(Comment commentDTO);
 }

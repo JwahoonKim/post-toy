@@ -1,5 +1,6 @@
 package com.flab.posttoy.web.controller;
 
+import com.flab.posttoy.domain.Comment;
 import com.flab.posttoy.dto.CommentDTO;
 import com.flab.posttoy.dto.mapper.CommentMapper;
 import com.flab.posttoy.service.ICommentService;
@@ -21,17 +22,17 @@ public class CommentController {
     private final ICommentService commentService;
     private final WebCommentMapper commentMapper;
 
-    @PostMapping("/posts/{postId}/comments")
-    public ResponseEntity<ResponseCommentDTO> commentSave(@RequestBody @Valid RequestCommentDTO requestCommentDTO){
-        CommentDTO commentDTO = commentService.addComment(commentMapper.toCommentDto(requestCommentDTO));
-        ResponseCommentDTO responseCommentDTO = commentMapper.toResponseCommentDto(commentDTO);
-        return ResponseEntity.created(URI.create("/posts/"+responseCommentDTO.getPostId())).body(responseCommentDTO);
-    }
+//    @PostMapping("/posts/{postId}/comments")
+//    public ResponseEntity<ResponseCommentDTO> commentSave(@RequestBody @Valid RequestCommentDTO requestCommentDTO){
+//        CommentDTO commentDTO = commentService.addComment(commentMapper.toCommentDto(requestCommentDTO));
+//        ResponseCommentDTO responseCommentDTO = commentMapper.toResponseCommentDto(commentDTO);
+//        return ResponseEntity.created(URI.create("/posts/"+responseCommentDTO.getPostId())).body(responseCommentDTO);
+//    }
 
     @PatchMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<ResponseCommentDTO> commentModify(@RequestBody RequestCommentDTO requestCommentDTO, @PathVariable Long commentId) {
-        CommentDTO commentDTO = commentService.modifyComment(commentMapper.toUpdateCommentDto(requestCommentDTO), commentId);
-        ResponseCommentDTO responseCommentDTO = commentMapper.toResponseCommentDto(commentDTO);
+        Comment comment = commentService.modifyComment(requestCommentDTO.getContent(), commentId);
+        ResponseCommentDTO responseCommentDTO = commentMapper.toResponseCommentDto(comment);
         return new ResponseEntity<>(responseCommentDTO, HttpStatus.OK);
     }
 
