@@ -1,8 +1,7 @@
 package com.flab.posttoy.web.controller;
 
 import com.flab.posttoy.dto.CommentDTO;
-import com.flab.posttoy.dto.mapper.CommentMapper;
-import com.flab.posttoy.service.ICommentService;
+import com.flab.posttoy.service.CommentService;
 import com.flab.posttoy.web.dto.mapper.WebCommentMapper;
 import com.flab.posttoy.web.dto.request.RequestCommentDTO;
 import com.flab.posttoy.web.dto.response.ResponseCommentDTO;
@@ -18,7 +17,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class CommentController {
 
-    private final ICommentService commentService;
+    private final CommentService commentService;
     private final WebCommentMapper commentMapper;
 
     @PostMapping("/posts/{postId}/comments")
